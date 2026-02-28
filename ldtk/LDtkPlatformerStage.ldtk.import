@@ -14,19 +14,19 @@ dest_files=["res://.godot/imported/LDtkPlatformerStage.ldtk-18db22cbf26287abddf3
 
 [params]
 
-world_add_metadata=false
+world_add_metadata=true
 world_post_import_script=""
 Tilesets=""
 tileset_add_metadata=true
 import_tileset_custom_data=true
-tileset_post_import_script=""
+tileset_post_import_script="uid://dh2h1nt5ly273"
 Levels=""
 level_add_metadata=true
 import_all_levels=true
 levels_to_import="0,1"
 pack_levels=false
-level_post_import_script=""
+level_post_import_script="uid://dmbqrek3ot2ls"
 Entities=""
 import_entities=true
 entity_add_metadata=true
-entity_post_import_script=""
+entity_post_import_script="uid://bhgner12jy3f2"

@@ -3,7 +3,7 @@ extends Node
 
 const Tile = preload("res://addons/amano-ldtk-importer/util/tile.gd")
 
-const CUSTOM_DATA_LAYER_NAME := 'IntGrid_with_rules'
+const CUSTOM_DATA_LAYER_NAME := 'Collisions'
 
 var collision_layer := 1
 var walls_int_value := 1
@@ -11,7 +11,7 @@ var walls_int_value := 1
 # This script adds a square collision polygon the size of the tile
 # to all the tiles that have the "Collision" enum
 func post_import(tileset: TileSet) -> TileSet:
-	var physics_layer_id := 0
+	var physics_layer_id := 1
 	var source_count := tileset.get_source_count()
 
 	for index in range(0, source_count):
@@ -26,7 +26,7 @@ func post_import(tileset: TileSet) -> TileSet:
 
 		tileset.add_physics_layer()
 		tileset.set_physics_layer_collision_layer(physics_layer_id, collision_layer)
-		tileset.set_physics_layer_collision_mask(physics_layer_id, 0)
+		tileset.set_physics_layer_collision_mask(physics_layer_id, 1)
 
 		var tile_size := tileset.tile_size
 		var tile_extents := Vector2(tile_size.x/2, tile_size.y/2)

@@ -1,0 +1,32 @@
+[remap]
+
+importer="LDtk_world.import"
+type="PackedScene"
+uid="uid://cbtplbw48n5nv"
+path="res://.godot/imported/LDtkPlatformerStage.ldtk-72896e6beb8aa601e198b24c116c2ded.scn"
+
+[deps]
+
+files=["res://ldtk/LDtkPlatformerStage/backups/2db8dda0-fa90-11f0-828d-23db1e8a890e_2026-02-28_19-53-28/LDtkPlatformerStage/tilesets/LDtkPlatformerStage-tileset-16x16.res", "res://ldtk/LDtkPlatformerStage/backups/2db8dda0-fa90-11f0-828d-23db1e8a890e_2026-02-28_19-53-28/LDtkPlatformerStage/tilesets/LDtkPlatformerStage-tileset-8x8.res"]
+
+source_file="res://ldtk/LDtkPlatformerStage/backups/2db8dda0-fa90-11f0-828d-23db1e8a890e_2026-02-28_19-53-28/LDtkPlatformerStage.ldtk"
+dest_files=["res://.godot/imported/LDtkPlatformerStage.ldtk-72896e6beb8aa601e198b24c116c2ded.scn", "res://ldtk/LDtkPlatformerStage/backups/2db8dda0-fa90-11f0-828d-23db1e8a890e_2026-02-28_19-53-28/LDtkPlatformerStage/tilesets/LDtkPlatformerStage-tileset-16x16.res", "res://ldtk/LDtkPlatformerStage/backups/2db8dda0-fa90-11f0-828d-23db1e8a890e_2026-02-28_19-53-28/LDtkPlatformerStage/tilesets/LDtkPlatformerStage-tileset-8x8.res"]
+
+[params]
+
+world_add_metadata=false
+world_post_import_script=""
+Tilesets=""
+tileset_add_metadata=true
+import_tileset_custom_data=true
+tileset_post_import_script=""
+Levels=""
+level_add_metadata=true
+import_all_levels=true
+levels_to_import="0,1"
+pack_levels=false
+level_post_import_script=""
+Entities=""
+import_entities=true
+entity_add_metadata=true
+entity_post_import_script=""
