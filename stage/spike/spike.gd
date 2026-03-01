@@ -46,4 +46,3 @@ func _ready() -> void:
 									Vector2(tile_extents.x, -tile_extents.y)
 								])
 							)
-

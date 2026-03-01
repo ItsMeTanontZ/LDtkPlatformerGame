@@ -8,10 +8,21 @@ const JUMP_VELOCITY = -300.0
 const DOUBLE_JUMP_VELOCITY = -250.0
 const ACCELERATION = 1200.0
 const FRICTION = 1000.0
+const DASH_SPEED = 300.0
+const DASH_DURATION = 0.15
+const DASH_COOLDOWN = 0.5
 
 var jump_count: int = 0
 var max_jumps: int = 2
 var facing_right: bool = true
+var just_double_jumped: bool = false
+
+# Dash system
+var is_dashing: bool = false
+var dash_timer: float = 0.0
+var dash_cooldown_timer: float = 0.0
+var dash_direction: int = 0
+var dash_start_y: float = 0.0
 
 # Collision tracking
 var is_colliding_ground: bool = false
@@ -58,6 +69,27 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 	
+	# Update dash cooldown
+	if dash_cooldown_timer > 0:
+		dash_cooldown_timer -= delta
+	
+	# Handle dashing
+	if is_dashing:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			# End dash
+			is_dashing = false
+			dash_cooldown_timer = DASH_COOLDOWN
+		else:
+			# During dash: maintain horizontal speed and Y position
+			velocity.x = dash_direction * DASH_SPEED
+			velocity.y = 0  # Lock Y position during dash
+			position.y = dash_start_y  # Force keep Y position
+			move_and_slide()
+			check_collisions()
+			update_debug_display()
+			return  # Skip rest of physics processing while dashing
+	
 	# Update platform drop timer
 	if platform_drop_timer > 0:
 		platform_drop_timer -= delta
@@ -71,6 +103,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Reset jump count when on floor
 		jump_count = 0
+		just_double_jumped = false  # Reset double jump flag on landing
 	
 	# Handle jump and double jump
 	if Input.is_action_just_pressed("jump"):
@@ -78,10 +111,22 @@ func _physics_process(delta: float) -> void:
 			# First jump
 			velocity.y = JUMP_VELOCITY
 			jump_count = 1
+			just_double_jumped = false
 		elif jump_count < max_jumps:
 			# Double jump
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			jump_count += 1
+			just_double_jumped = true
+	
+	# Handle dash input (only if not on cooldown and not already dashing)
+	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
+		# Start dash in current facing direction
+		is_dashing = true
+		dash_timer = DASH_DURATION
+		dash_direction = 1 if facing_right else -1
+		dash_start_y = position.y  # Remember Y position at start of dash
+		velocity.x = dash_direction * DASH_SPEED
+		velocity.y = 0
 	
 	# Get movement input
 	var direction := Input.get_axis("move_left", "move_right")
@@ -198,6 +243,10 @@ func die() -> void:
 		return
 	
 	is_dead = true
+	is_dashing = false  # Cancel dash on death
+	
+	# Play death animation
+	sprite.play("die")
 	
 	# Disable physics temporarily
 	velocity = Vector2.ZERO
@@ -212,6 +261,10 @@ func respawn() -> void:
 	is_dead = false
 	is_colliding_spike = false
 	prev_colliding_spike = false
+	is_dashing = false
+	dash_timer = 0.0
+	dash_cooldown_timer = 0.0
+	just_double_jumped = false
 	
 	# Update previous states
 	prev_colliding_ground = is_colliding_ground
@@ -233,31 +286,31 @@ func update_debug_display() -> void:
 
 
 func update_animation(direction: float) -> void:
+	# Flip sprite based on facing direction
+	sprite.flip_h = not facing_right
+	
 	# Determine which animation to play based on movement and state
-	if is_on_floor():
+	if is_dashing:
+		# Dashing animation
+		sprite.play("dash")
+	elif is_on_floor():
 		if abs(velocity.x) > 10:
 			# Running
-			if facing_right:
-				sprite.play("run")
-			else:
-				sprite.play("run")
+			sprite.play("run")
 		else:
 			# Idle
-			if facing_right:
-				sprite.play("idle")
-			else:
-				sprite.play("idle")
+			sprite.play("idle")
 	else:
-		# In air - could add jump/fall animations if available
-		if abs(velocity.x) > 10:
-			# Use dash animation for air movement
-			if facing_right:
-				sprite.play("dash")
-			else:
-				sprite.play("dash")
+		# In air
+		if just_double_jumped:
+			# Double jump animation
+			sprite.play("double_jump")
+		elif velocity.y < 0:
+			# Moving up (jumping)
+			sprite.play("jump_up")
+		elif abs(velocity.x) > 10:
+			# Moving horizontally in air
+			sprite.play("jump_mid")
 		else:
-			# Use idle animation in air if not moving horizontally
-			if facing_right:
-				sprite.play("idle")
-			else:
-				sprite.play("idle")
+			# Falling or stationary in air
+			sprite.play("jump_fall")
