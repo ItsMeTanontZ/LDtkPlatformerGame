@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2glt8ecucw3f"
-path="res://.godot/imported/bg_00_warp_room.png-f6a05c745f72321c67131ab348232f80.ctex"
+path="res://.godot/imported/bg_00_warp_room.png-266fe28a2876dab9ab0f49dbaaf3d614.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ldtk/assets/Tilesets/warp room/bg_00_warp_room.png"
-dest_files=["res://.godot/imported/bg_00_warp_room.png-f6a05c745f72321c67131ab348232f80.ctex"]
+source_file="res://ldtk/assets/tilesets/warp room/bg_00_warp_room.png"
+dest_files=["res://.godot/imported/bg_00_warp_room.png-266fe28a2876dab9ab0f49dbaaf3d614.ctex"]
 
 [params]
 

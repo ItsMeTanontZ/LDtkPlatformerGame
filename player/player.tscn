@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bx6th0ekpbypl" path="res://player/player.gd" id="1_boad6"]
 [ext_resource type="Script" uid="uid://weoeg0k6h3u2" path="res://player/room_camera.gd" id="3_pxqnf"]
-[ext_resource type="Texture2D" uid="uid://cicmf8b7rwrho" path="res://ldtk/assets/Player Char/going right animations/char_dash_right_anim.png" id="3_rgyib"]
-[ext_resource type="Texture2D" uid="uid://ddj3omxvn177r" path="res://ldtk/assets/Player Char/going right animations/char_idle_right_anim.png" id="4_hg6s5"]
-[ext_resource type="Texture2D" uid="uid://521yvjjrtlg8" path="res://ldtk/assets/Player Char/going right animations/char_jump_falling_right_anim.png" id="5_8t03j"]
-[ext_resource type="Texture2D" uid="uid://bgw7ulp1o61yc" path="res://ldtk/assets/Player Char/going right animations/char_jump_mid_right_anim.png" id="6_2ieo8"]
-[ext_resource type="Texture2D" uid="uid://bykjv0fwd6v16" path="res://ldtk/assets/Player Char/going right animations/char_jump_up_right_anim.png" id="7_ebec5"]
-[ext_resource type="Texture2D" uid="uid://cuycrmoag06ol" path="res://ldtk/assets/Player Char/going right animations/char_run_right_anim.png" id="8_yllr7"]
+[ext_resource type="Texture2D" uid="uid://cicmf8b7rwrho" path="res://assets/player_character/going right animations/char_dash_right_anim.png" id="3_rgyib"]
+[ext_resource type="Texture2D" uid="uid://ddj3omxvn177r" path="res://assets/player_character/going right animations/char_idle_right_anim.png" id="4_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://521yvjjrtlg8" path="res://assets/player_character/going right animations/char_jump_falling_right_anim.png" id="5_8t03j"]
+[ext_resource type="Texture2D" uid="uid://bgw7ulp1o61yc" path="res://assets/player_character/going right animations/char_jump_mid_right_anim.png" id="6_2ieo8"]
+[ext_resource type="Texture2D" uid="uid://bykjv0fwd6v16" path="res://assets/player_character/going right animations/char_jump_up_right_anim.png" id="7_ebec5"]
+[ext_resource type="Texture2D" uid="uid://cuycrmoag06ol" path="res://assets/player_character/going right animations/char_run_right_anim.png" id="8_yllr7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
 atlas = ExtResource("3_rgyib")
@@ -134,7 +134,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dash",
-"speed": 24.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -157,7 +157,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 24.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -171,7 +171,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_fall",
-"speed": 24.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -185,7 +185,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_mid",
-"speed": 24.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -199,7 +199,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_up",
-"speed": 24.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -228,7 +228,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 24.0
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kb6p2"]
@@ -243,10 +243,14 @@ sprite_frames = SubResource("SpriteFrames_a2xo5")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786649970]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_kb6p2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1067865154]
+light_mask = 3
+visibility_layer = 3
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("3_pxqnf")

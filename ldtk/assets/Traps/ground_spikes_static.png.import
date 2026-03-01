@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dr41f663a433g"
-path="res://.godot/imported/ground_spikes_static.png-eced669a9cebc3574eadfee4093fe3d3.ctex"
+path="res://.godot/imported/ground_spikes_static.png-767d315822c8313f23cec7673494ba10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ldtk/assets/Traps/ground_spikes_static.png"
-dest_files=["res://.godot/imported/ground_spikes_static.png-eced669a9cebc3574eadfee4093fe3d3.ctex"]
+source_file="res://ldtk/assets/traps/ground_spikes_static.png"
+dest_files=["res://.godot/imported/ground_spikes_static.png-767d315822c8313f23cec7673494ba10.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl3h1durpo274"
-path="res://.godot/imported/bg_01_boss_room.png-48942063fb386ed0d9399abe55ab92c1.ctex"
+path="res://.godot/imported/bg_01_boss_room.png-7926b2a36d8cfe8a2b12523dd206f7db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ldtk/assets/Tilesets/boss room/bg_01_boss_room.png"
-dest_files=["res://.godot/imported/bg_01_boss_room.png-48942063fb386ed0d9399abe55ab92c1.ctex"]
+source_file="res://ldtk/assets/tilesets/boss room/bg_01_boss_room.png"
+dest_files=["res://.godot/imported/bg_01_boss_room.png-7926b2a36d8cfe8a2b12523dd206f7db.ctex"]
 
 [params]
 

@@ -30,6 +30,7 @@ enabled=PackedStringArray("res://addons/amano-ldtk-importer/plugin.cfg")
 [layer_names]
 
 2d_physics/layer_1="Ground"
+2d_physics/layer_2="Platform"
 
 [physics]
 

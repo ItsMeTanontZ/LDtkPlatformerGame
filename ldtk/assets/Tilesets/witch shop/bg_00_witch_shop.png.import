@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmmd6pvnltwki"
-path="res://.godot/imported/bg_00_witch_shop.png-454dff88ead60f7ee9360e2977cb86f7.ctex"
+path="res://.godot/imported/bg_00_witch_shop.png-cde359373bd3cc6166b282e8770c759e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ldtk/assets/Tilesets/witch shop/bg_00_witch_shop.png"
-dest_files=["res://.godot/imported/bg_00_witch_shop.png-454dff88ead60f7ee9360e2977cb86f7.ctex"]
+source_file="res://ldtk/assets/tilesets/witch shop/bg_00_witch_shop.png"
+dest_files=["res://.godot/imported/bg_00_witch_shop.png-cde359373bd3cc6166b282e8770c759e.ctex"]
 
 [params]
 
