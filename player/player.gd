@@ -16,7 +16,12 @@ var facing_right: bool = true
 # Collision tracking
 var is_colliding_ground: bool = false
 var is_colliding_platform: bool = false
+var is_colliding_spike: bool = false
 var collision_info: Array = []
+
+# Death and respawn
+var spawn_position: Vector2
+var is_dead: bool = false
 
 # Platform drop-through system
 var platform_drop_timer: float = 0.0
@@ -25,17 +30,18 @@ const PLATFORM_DROP_DURATION: float = 0.2
 # Track previous collision states to avoid spam
 var prev_colliding_ground: bool = false
 var prev_colliding_platform: bool = false
+var prev_colliding_spike: bool = false
 
 
 func _ready() -> void:
+	# Save spawn position
+	spawn_position = position
+	
 	# Set player's own collision layer (what layer the player exists on)
 	collision_layer = 0b1000  # Put player on layer 4 (separate from tiles)
 	
-	# Set collision mask to detect layers 1 (ground) and 2 (platforms)
-	collision_mask = 0b11  # Binary: 11 = layers 1 and 2 (bitmask: 1 + 2 = 3)
-	
-	print("Player collision_layer set to: ", collision_layer)
-	print("Player collision_mask set to: ", collision_mask)
+	# Set collision mask to detect layers 1 (ground), 2 (platforms), and 3 (spikes)
+	collision_mask = 0b111  # Binary: 111 = layers 1, 2, and 3 (bitmask: 1 + 2 + 4 = 7)
 	
 	# Create debug label
 	debug_label = Label.new()
@@ -48,13 +54,16 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Don't process if dead
+	if is_dead:
+		return
+	
 	# Update platform drop timer
 	if platform_drop_timer > 0:
 		platform_drop_timer -= delta
 		if platform_drop_timer <= 0:
 			# Re-enable platform collision
 			set_collision_mask_value(2, true)  # Layer 2 = platforms
-			print("Platform collision re-enabled")
 	
 	# Add gravity
 	if not is_on_floor():
@@ -101,7 +110,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move_down") and is_on_floor():
 		# Check if we're standing on a platform (layer 2)
 		if is_colliding_platform:
-			print("🔽 Dropping through platform!")
 			# Temporarily disable platform collision
 			set_collision_mask_value(2, false)  # Layer 2 = platforms
 			platform_drop_timer = PLATFORM_DROP_DURATION
@@ -115,6 +123,7 @@ func check_collisions() -> void:
 	# Reset collision flags
 	is_colliding_ground = false
 	is_colliding_platform = false
+	is_colliding_spike = false
 	collision_info.clear()
 	
 	var collision_count = get_slide_collision_count()
@@ -156,8 +165,6 @@ func check_collisions() -> void:
 					if collision_layer_mask & 1:  # Layer 1
 						if not is_colliding_ground:
 							is_colliding_ground = true
-							if not prev_colliding_ground:
-								print("🟫 GROUND (", collision_data["tilemap_name"], ")")
 						if not 1 in collision_data["layers"]:
 							collision_data["layers"].append(1)
 					
@@ -165,14 +172,46 @@ func check_collisions() -> void:
 					if collision_layer_mask & 2:  # Layer 2
 						if not is_colliding_platform:
 							is_colliding_platform = true
-							if not prev_colliding_platform:
-								print("🟦 PLATFORM (", collision_data["tilemap_name"], ")")
 						if not 2 in collision_data["layers"]:
 							collision_data["layers"].append(2)
+					
+					# Check if this physics layer is on collision layer 3 (spikes)
+					if collision_layer_mask & 4:  # Layer 3 (bit 2 = value 4)
+						if not is_colliding_spike:
+							is_colliding_spike = true
+							if not prev_colliding_spike:
+								die()
+						if not 3 in collision_data["layers"]:
+							collision_data["layers"].append(3)
 		
 		collision_info.append(collision_data)
 	
 	# Print when collision state changes (removed spam)
+	
+	# Update previous states
+	prev_colliding_ground = is_colliding_ground
+	prev_colliding_platform = is_colliding_platform
+	prev_colliding_spike = is_colliding_spike
+
+func die() -> void:
+	if is_dead:
+		return
+	
+	is_dead = true
+	
+	# Disable physics temporarily
+	velocity = Vector2.ZERO
+	
+	# Wait a moment then respawn
+	await get_tree().create_timer(0.5).timeout
+	respawn()
+
+func respawn() -> void:
+	position = spawn_position
+	velocity = Vector2.ZERO
+	is_dead = false
+	is_colliding_spike = false
+	prev_colliding_spike = false
 	
 	# Update previous states
 	prev_colliding_ground = is_colliding_ground

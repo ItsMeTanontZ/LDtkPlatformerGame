@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://2h6mlfbftpxj" path="res://stage/platform/platform.gd" id="3_8soai"]
 [ext_resource type="TileSet" uid="uid://byc0jxvvt37js" path="res://stage/spike/spike.tres" id="3_h5i6i"]
 [ext_resource type="PackedScene" uid="uid://2gu0anikb7l7" path="res://player/player.tscn" id="4_xr11t"]
+[ext_resource type="Script" uid="uid://2gy21oi3yusq" path="res://stage/spike/spike.gd" id="5_8soai"]
 
 [node name="LDtkPlatformerStage" unique_id=545027049 instance=ExtResource("1_ueyvo")]
 
@@ -34,6 +35,7 @@ light_mask = 4
 visibility_layer = 4
 tile_set = ExtResource("3_h5i6i")
 format = 2
+script = ExtResource("5_8soai")
 
 [node name="GroundSpike" type="TileMapLayer" parent="Spike/SpikesTile" index="1" unique_id=1376146689]
 tile_map_data = PackedByteArray("AACqABkAAQAAAAAAAACrABkAAQABAAAAAAC4ABkAAQAFAAEAAAC4ABgAAQAFAAEAAAC4ABcAAQAFAAEAAAC4ABYAAQAFAAAAAAC9AA0AAQADAAEAAAC9AAwAAQADAAEAAAC9AAsAAQADAAEAAAC9AAoAAQADAAEAAAC9AAkAAQADAAEAAAC9AAgAAQADAAEAAAC9AAcAAQADAAEAAAC9AAYAAQADAAAAAAAAARYAAQAFAAAAAAAAARcAAQAFAAEAAAAAARgAAQAFAAEAAAAAARkAAQAFAAEAAAARAQ8AAQADAAAAAAARAQ4AAQADAAAAAAARARAAAQADAAEAAAARAREAAQADAAEAAAD7ABkAAQABAAAAAAD5ABkAAQAAAAAAAAD6ABkAAQABAAAAAAD4ABkAAQAAAAAAAAAIARkAAQAAAAAAAAAKARkAAQABAAAAAAALARkAAQABAAAAAAAJARkAAQAAAAAAAAA=")
