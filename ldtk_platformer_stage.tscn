@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://dqxh7i80ro7yf"]
-
-[ext_resource type="PackedScene" uid="uid://dr5wowear21fm" path="res://ldtk/LDtkPlatformerStage.ldtk" id="1_2kc06"]
-[ext_resource type="PackedScene" uid="uid://2gu0anikb7l7" path="res://player/player.tscn" id="2_71q6g"]
-
-[node name="LDtkPlatformerStage" unique_id=971594268 instance=ExtResource("1_2kc06")]
-
-[node name="Player" parent="." index="9" unique_id=27479797 instance=ExtResource("2_71q6g")]
-position = Vector2(65, 175)

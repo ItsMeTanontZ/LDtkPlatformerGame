@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://dqxh7i80ro7yf"]
+
+[ext_resource type="PackedScene" uid="uid://dr5wowear21fm" path="res://ldtk/LDtkPlatformerStage.ldtk" id="1_ueyvo"]
+[ext_resource type="TileSet" uid="uid://dqe35b0jkhmo" path="res://stage/platform/platform.tres" id="2_xr11t"]
+[ext_resource type="Script" uid="uid://2h6mlfbftpxj" path="res://stage/platform/platform.gd" id="3_8soai"]
+[ext_resource type="TileSet" uid="uid://byc0jxvvt37js" path="res://stage/spike/spike.tres" id="3_h5i6i"]
+[ext_resource type="PackedScene" uid="uid://2gu0anikb7l7" path="res://player/player.tscn" id="4_xr11t"]
+
+[node name="LDtkPlatformerStage" unique_id=545027049 instance=ExtResource("1_ueyvo")]
+
+[node name="Level_4-tilemap-16x16" parent="Level_4" parent_id_path=PackedInt32Array(1825170208) index="0" unique_id=493832076]
+layer_0/name = "Collisions"
+
+[node name="Level_6-tilemap-16x16" parent="Level_6" parent_id_path=PackedInt32Array(565268108) index="0" unique_id=892145576]
+layer_0/name = "Collisions"
+
+[node name="Platform" type="Node2D" parent="." index="9" unique_id=353371949]
+
+[node name="PlatformsTile" type="TileMap" parent="Platform" index="0" unique_id=19661462]
+light_mask = 2
+visibility_layer = 2
+tile_set = ExtResource("2_xr11t")
+format = 2
+script = ExtResource("3_8soai")
+
+[node name="Platforms" type="TileMapLayer" parent="Platform/PlatformsTile" index="1" unique_id=1637029237]
+tile_map_data = PackedByteArray("AABIAAgAAAABAAAAAABMAAgAAAABAAAAAABJAAgAAAACAAAAAABNAAgAAAACAAAAAACCAAkAAAABAAAAAACDAAkAAAACAAAAAACGAAcAAAAAAAAAAACQAPn/AAABAAAAAACTAPn/AAABAAAAAACXAPn/AAABAAAAAACaAPn/AAABAAAAAACbAPn/AAACAAAAAACYAPn/AAACAAAAAACUAPn/AAACAAAAAACRAPn/AAACAAAAAAA=")
+tile_set = ExtResource("2_xr11t")
+
+[node name="Spike" type="Node2D" parent="." index="10" unique_id=701031494]
+
+[node name="SpikesTile" type="TileMap" parent="Spike" index="0" unique_id=161439388]
+light_mask = 4
+visibility_layer = 4
+tile_set = ExtResource("3_h5i6i")
+format = 2
+
+[node name="GroundSpike" type="TileMapLayer" parent="Spike/SpikesTile" index="1" unique_id=1376146689]
+tile_map_data = PackedByteArray("AACqABkAAQAAAAAAAACrABkAAQABAAAAAAC4ABkAAQAFAAEAAAC4ABgAAQAFAAEAAAC4ABcAAQAFAAEAAAC4ABYAAQAFAAAAAAC9AA0AAQADAAEAAAC9AAwAAQADAAEAAAC9AAsAAQADAAEAAAC9AAoAAQADAAEAAAC9AAkAAQADAAEAAAC9AAgAAQADAAEAAAC9AAcAAQADAAEAAAC9AAYAAQADAAAAAAAAARYAAQAFAAAAAAAAARcAAQAFAAEAAAAAARgAAQAFAAEAAAAAARkAAQAFAAEAAAARAQ8AAQADAAAAAAARAQ4AAQADAAAAAAARARAAAQADAAEAAAARAREAAQADAAEAAAD7ABkAAQABAAAAAAD5ABkAAQAAAAAAAAD6ABkAAQABAAAAAAD4ABkAAQAAAAAAAAAIARkAAQAAAAAAAAAKARkAAQABAAAAAAALARkAAQABAAAAAAAJARkAAQAAAAAAAAA=")
+tile_set = ExtResource("3_h5i6i")
+
+[node name="LeftWallSpike" type="TileMapLayer" parent="Spike/SpikesTile" index="2" unique_id=1301587203]
+tile_set = ExtResource("3_h5i6i")
+
+[node name="RightWallSpike" type="TileMapLayer" parent="Spike/SpikesTile" index="3" unique_id=997642796]
+tile_set = ExtResource("3_h5i6i")
+
+[node name="Player" parent="." index="11" unique_id=27479797 instance=ExtResource("4_xr11t")]
+position = Vector2(1164, 188)

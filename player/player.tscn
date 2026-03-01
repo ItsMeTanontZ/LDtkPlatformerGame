@@ -232,10 +232,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kb6p2"]
-radius = 3.0
+radius = 4.0
 height = 10.0
 
 [node name="Player" type="CharacterBody2D" unique_id=27479797]
+collision_layer = 3
+collision_mask = 6
 script = ExtResource("1_boad6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=713858709]
@@ -243,8 +245,8 @@ sprite_frames = SubResource("SpriteFrames_a2xo5")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786649970]
-light_mask = 3
-visibility_layer = 3
+light_mask = 7
+visibility_layer = 7
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_kb6p2")
 
