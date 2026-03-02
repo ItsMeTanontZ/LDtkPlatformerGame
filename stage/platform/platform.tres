@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dbh6nbpnyynjp" path="res://ldtk/assets/tilesets/platforms.png" id="1_w7xnm"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwfxb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7xnm"]
 texture = ExtResource("1_w7xnm")
 0:0/0 = 0
 1:0/0 = 0
@@ -19,5 +19,5 @@ texture = ExtResource("1_w7xnm")
 
 [resource]
 physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_wwfxb")
+physics_layer_0/collision_mask = 128
+sources/0 = SubResource("TileSetAtlasSource_w7xnm")

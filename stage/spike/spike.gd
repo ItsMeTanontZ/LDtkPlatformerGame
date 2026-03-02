@@ -8,11 +8,6 @@ func _ready() -> void:
 		print("❌ Spike: No tileset found!")
 		return
 	
-	# Set physics layer to collision layer 3 (spikes)
-	for physics_layer_idx in range(tileset.get_physics_layers_count()):
-		tileset.set_physics_layer_collision_layer(physics_layer_idx, 4)  # Layer 3 = bit 2 = value 4
-		tileset.set_physics_layer_collision_mask(physics_layer_idx, 0)
-	
 	# Add collision shapes to all spike tiles
 	var source_count = tileset.get_source_count()
 	var tile_size = tileset.tile_size

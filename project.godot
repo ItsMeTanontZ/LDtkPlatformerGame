@@ -68,6 +68,10 @@ dash={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="Platform"
 2d_physics/layer_3="Spikes"
+2d_physics/layer_4="Collectibles"
+2d_physics/layer_5="DeathZone"
+2d_physics/layer_6="Checkpoint"
+2d_physics/layer_8="Player"
 
 [physics]
 

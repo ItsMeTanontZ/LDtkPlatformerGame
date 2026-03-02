@@ -33,6 +33,7 @@ var collision_info: Array = []
 # Death and respawn
 var spawn_position: Vector2
 var is_dead: bool = false
+var is_respawning: bool = false
 
 # Platform drop-through system
 var platform_drop_timer: float = 0.0
@@ -43,16 +44,16 @@ var prev_colliding_ground: bool = false
 var prev_colliding_platform: bool = false
 var prev_colliding_spike: bool = false
 
+# Collectibles
+var coins: int = 0
+
 
 func _ready() -> void:
 	# Save spawn position
 	spawn_position = position
 	
-	# Set player's own collision layer (what layer the player exists on)
-	collision_layer = 0b1000  # Put player on layer 4 (separate from tiles)
-	
-	# Set collision mask to detect layers 1 (ground), 2 (platforms), and 3 (spikes)
-	collision_mask = 0b111  # Binary: 111 = layers 1, 2, and 3 (bitmask: 1 + 2 + 4 = 7)
+	# Connect to animation finished signal
+	sprite.animation_finished.connect(_on_animation_finished)
 	
 	# Create debug label
 	debug_label = Label.new()
@@ -65,8 +66,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Don't process if dead
-	if is_dead:
+	# Don't process if dead or respawning
+	if is_dead or is_respawning:
 		return
 	
 	# Update dash cooldown
@@ -256,6 +257,9 @@ func die() -> void:
 	respawn()
 
 func respawn() -> void:
+	# Set respawning flag first to prevent camera from following
+	is_respawning = true
+	
 	position = spawn_position
 	velocity = Vector2.ZERO
 	is_dead = false
@@ -266,9 +270,19 @@ func respawn() -> void:
 	dash_cooldown_timer = 0.0
 	just_double_jumped = false
 	
+	# Play respawn animation
+	sprite.play("respawn")
+	# Controls will be unlocked when animation finishes
+	
 	# Update previous states
 	prev_colliding_ground = is_colliding_ground
 	prev_colliding_platform = is_colliding_platform
+
+
+func _on_animation_finished() -> void:
+	# Unlock controls when respawn animation finishes
+	if sprite.animation == "respawn":
+		is_respawning = false
 
 
 func update_debug_display() -> void:
@@ -314,3 +328,8 @@ func update_animation(direction: float) -> void:
 		else:
 			# Falling or stationary in air
 			sprite.play("jump_fall")
+
+
+func add_coin(value: int) -> void:
+	coins += value
+	print("Coins collected: ", coins)

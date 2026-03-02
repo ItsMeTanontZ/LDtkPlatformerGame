@@ -1,21 +1,15 @@
-extends TileMap
+extends TileMapLayer
 
 # One-way platform that player can jump through from below
 # but land on from above. Player can press down to drop through.
 
 func _ready() -> void:
-	# Enable one-way collision for this TileMap
-	# This allows collision from above, but passes through from below/sides
+	# Enable one-way collision for platforms
 	
 	var tileset = tile_set
 	if not tileset:
 		print("❌ Platform: No tileset found!")
 		return
-	
-	# Set physics layer to collision layer 2 ONLY (not layer 1)
-	for physics_layer_idx in range(tileset.get_physics_layers_count()):
-		tileset.set_physics_layer_collision_layer(physics_layer_idx, 2)
-		tileset.set_physics_layer_collision_mask(physics_layer_idx, 0)
 	
 	# Add collision shapes to all tiles and enable one-way collision
 	var source_count = tileset.get_source_count()
