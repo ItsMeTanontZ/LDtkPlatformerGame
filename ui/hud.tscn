@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://v5bhvyudxk8s"]
+
+[ext_resource type="Script" uid="uid://bst6x831kwyus" path="res://ui/hud.gd" id="1_hud"]
+[ext_resource type="FontFile" uid="uid://c3p3yhmxii0xi" path="res://assets/grapesoda_2/GrapeSoda.ttf" id="2_font"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1079520503]
+script = ExtResource("1_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1393234361]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=529203268]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="LivesLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=683357473]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Lives: 3"
+
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1541400257]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1575133861]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Coins: 0"
+horizontal_alignment = 2

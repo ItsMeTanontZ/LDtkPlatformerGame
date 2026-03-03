@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var debug_label: Label = null
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
@@ -59,15 +58,6 @@ func _ready() -> void:
 	
 	# Connect to animation finished signal
 	sprite.animation_finished.connect(_on_animation_finished)
-	
-	# Create debug label
-	debug_label = Label.new()
-	debug_label.position = Vector2(10, 10)
-	debug_label.add_theme_font_size_override("font_size", 12)
-	# Add to a CanvasLayer so it stays on screen
-	var canvas_layer = CanvasLayer.new()
-	canvas_layer.add_child(debug_label)
-	add_child(canvas_layer)
 
 
 func _physics_process(delta: float) -> void:
@@ -99,7 +89,6 @@ func _physics_process(delta: float) -> void:
 			position.y = dash_start_y  # Force keep Y position
 			move_and_slide()
 			check_collisions()
-			update_debug_display()
 			return  # Skip rest of physics processing while dashing
 	
 	# Update platform drop timer
@@ -172,8 +161,6 @@ func _physics_process(delta: float) -> void:
 			platform_drop_timer = PLATFORM_DROP_DURATION
 			# Give a small downward push to help start falling
 			position.y += 2
-	
-	update_debug_display()
 
 
 func check_collisions() -> void:
@@ -323,12 +310,21 @@ func _on_animation_finished() -> void:
 
 
 func reset_game() -> void:
-	print("Game Over! Resetting...")
-	# Reset lives and coins
-	lives = max_lives
-	coins = 0
-	# Reload the current scene
-	get_tree().reload_current_scene()
+	print("Game Over!")
+	# Stop player movement and physics
+	falling_in_pit = false
+	is_dead = true
+	velocity = Vector2.ZERO
+	
+	# Show game over UI
+	var game_over_ui = get_tree().root.get_node_or_null("LDtkPlatformerStage/CanvasLayer/GameOver")
+	if game_over_ui:
+		game_over_ui.show_game_over(false, coins)
+	else:
+		# Fallback if UI not found
+		lives = max_lives
+		coins = 0
+		get_tree().reload_current_scene()
 
 
 func win() -> void:
@@ -337,28 +333,10 @@ func win() -> void:
 	# Freeze player
 	is_dead = true
 	velocity = Vector2.ZERO
-	# Wait a moment before reloading
-	await get_tree().create_timer(2.0).timeout
-	# Reset and reload the scene
-	lives = max_lives
-	coins = 0
-	get_tree().reload_current_scene()
-
-
-func update_debug_display() -> void:
-	if debug_label == null:
-		return
-	
-	var debug_text = "=== PLAYER DEBUG ===\n"
-	debug_text += "Lives: " + str(lives) + "/" + str(max_lives) + "\n"
-	debug_text += "Coins: " + str(coins) + "\n\n"
-	debug_text += "Position: " + str(global_position.snapped(Vector2(0.1, 0.1))) + "\n"
-	debug_text += "Velocity: " + str(velocity.snapped(Vector2(0.1, 0.1))) + "\n"
-	debug_text += "On Floor: " + str(is_on_floor()) + "\n\n"
-	debug_text += "Ground Collision: " + ("✓" if is_colliding_ground else "✗") + "\n"
-	debug_text += "Total Collisions: " + str(get_slide_collision_count()) + "\n"
-	
-	debug_label.text = debug_text
+	# Show win UI
+	var game_over_ui = get_tree().root.get_node_or_null("LDtkPlatformerStage/CanvasLayer/GameOver")
+	if game_over_ui:
+		game_over_ui.show_game_over(true, coins)
 
 
 func update_animation(direction: float) -> void:

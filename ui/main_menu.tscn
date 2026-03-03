@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://c8ef0nrmwam3d"]
+
+[ext_resource type="Texture2D" uid="uid://dq6t2macvjcp0" path="res://assets/free-swamp-game-tileset-pixel-art/2 Background/Background.png" id="1_0dkrt"]
+[ext_resource type="Script" uid="uid://b0r1d4nlcos2e" path="res://ui/main_menu.gd" id="1_wk0pr"]
+[ext_resource type="FontFile" uid="uid://c3p3yhmxii0xi" path="res://assets/grapesoda_2/GrapeSoda.ttf" id="2_wk0pr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rmr83"]
+texture = ExtResource("1_0dkrt")
+modulate_color = Color(0.34778348, 0.34778348, 0.34778348, 0.5019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dkrt"]
+bg_color = Color(0.29031694, 0.29031694, 0.29031694, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk0pr"]
+bg_color = Color(0.6039216, 0.6039216, 0.6039216, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmr83"]
+bg_color = Color(0.29031694, 0.29031694, 0.29031694, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uxxo"]
+bg_color = Color(0.6039216, 0.6039216, 0.6039216, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[node name="MainMenu" type="Control" unique_id=373097136]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk0pr")
+
+[node name="Panel" type="Panel" parent="." unique_id=1575814931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rmr83")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=979071521]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = 35.0
+offset_right = 145.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Start Game" type="Button" parent="VBoxContainer" unique_id=351147993]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wk0pr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_gl0q7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0dkrt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wk0pr")
+text = "Start Game"
+metadata/_edit_group_ = true
+
+[node name="Exit" type="Button" parent="VBoxContainer" unique_id=277060265]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wk0pr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_gl0q7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rmr83")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8uxxo")
+text = "Exit
+"
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="." unique_id=11281061]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -161.0
+offset_right = 218.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wk0pr")
+theme_override_font_sizes/font_size = 64
+text = "LDTK Integrated
+Platformer Game"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

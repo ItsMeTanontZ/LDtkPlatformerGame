@@ -1,19 +1,22 @@
 [gd_scene format=4 uid="uid://dqxh7i80ro7yf"]
 
 [ext_resource type="PackedScene" uid="uid://dr5wowear21fm" path="res://ldtk/LDtkPlatformerStage.ldtk" id="1_ueyvo"]
-[ext_resource type="TileSet" uid="uid://ckdp857licgop" path="res://stage/additional_tiles/additional_tiles.tres" id="2_v663j"]
-[ext_resource type="TileSet" uid="uid://dqe35b0jkhmo" path="res://stage/platform/platform.tres" id="2_xr11t"]
-[ext_resource type="Script" uid="uid://2h6mlfbftpxj" path="res://stage/platform/platform.gd" id="3_8soai"]
-[ext_resource type="TileSet" uid="uid://byc0jxvvt37js" path="res://stage/spike/spike.tres" id="3_h5i6i"]
-[ext_resource type="TileSet" uid="uid://dsdbo7624gw5c" path="res://stage/platform/rigid_platform.tres" id="4_bb7vg"]
+[ext_resource type="TileSet" uid="uid://ckdp857licgop" path="res://stage/additional_tiles.tres" id="2_v663j"]
+[ext_resource type="TileSet" uid="uid://dqe35b0jkhmo" path="res://stage/platform.tres" id="2_xr11t"]
+[ext_resource type="Script" uid="uid://2h6mlfbftpxj" path="res://stage/platform.gd" id="3_8soai"]
+[ext_resource type="TileSet" uid="uid://byc0jxvvt37js" path="res://stage/spike.tres" id="3_h5i6i"]
+[ext_resource type="TileSet" uid="uid://dsdbo7624gw5c" path="res://stage/rigid_platform.tres" id="4_bb7vg"]
 [ext_resource type="PackedScene" uid="uid://2gu0anikb7l7" path="res://player/player.tscn" id="4_xr11t"]
-[ext_resource type="Script" uid="uid://bwn3jxxpsorlo" path="res://stage/platform/rigid_platform.gd" id="5_8lag4"]
-[ext_resource type="Script" uid="uid://2gy21oi3yusq" path="res://stage/spike/spike.gd" id="5_8soai"]
+[ext_resource type="Script" uid="uid://bwn3jxxpsorlo" path="res://stage/rigid_platform.gd" id="5_8lag4"]
+[ext_resource type="Script" uid="uid://2gy21oi3yusq" path="res://stage/spike.gd" id="5_8soai"]
 [ext_resource type="PackedScene" uid="uid://dqfgu2mus6is0" path="res://collectibles/coins/coins.tscn" id="6_6ubsj"]
 [ext_resource type="PackedScene" uid="uid://dr7er3rvqfkmq" path="res://areas/checkpoint.tscn" id="7_v663j"]
 [ext_resource type="PackedScene" uid="uid://d4iy7n3u5ucn4" path="res://collectibles/coins/small_coins.tscn" id="8_mhcu2"]
 [ext_resource type="PackedScene" uid="uid://30jkp7emdgd4" path="res://areas/pit.tscn" id="9_0b6ei"]
 [ext_resource type="PackedScene" uid="uid://bn5pybf2xlufj" path="res://areas/win.tscn" id="12_8lag4"]
+[ext_resource type="PackedScene" uid="uid://bnxykd7g5jdfe" path="res://ui/pause_menu.tscn" id="15_lrqgh"]
+[ext_resource type="PackedScene" uid="uid://bs6l0pt8jyacx" path="res://ui/game_over.tscn" id="16_gameover"]
+[ext_resource type="PackedScene" uid="uid://ceg3t5qj8vxd8" path="res://ui/hud.tscn" id="17_hud"]
 
 [node name="LDtkPlatformerStage" unique_id=752797936 instance=ExtResource("1_ueyvo")]
 
@@ -209,4 +212,12 @@ tile_map_data = PackedByteArray("AABIAAgAAAABAAAAAABMAAgAAAABAAAAAABJAAgAAAACAAA
 tile_set = ExtResource("2_v663j")
 
 [node name="Player" parent="." index="5" unique_id=27479797 instance=ExtResource("4_xr11t")]
-position = Vector2(32, 192)
+position = Vector2(160, 120)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="18" unique_id=1831312289]
+
+[node name="PauseMenu" parent="CanvasLayer" index="0" unique_id=701353759 instance=ExtResource("15_lrqgh")]
+
+[node name="GameOver" parent="CanvasLayer" index="1" instance=ExtResource("16_gameover")]
+
+[node name="HUD" parent="CanvasLayer" index="2" instance=ExtResource("17_hud")]
