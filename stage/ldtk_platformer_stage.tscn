@@ -267,6 +267,12 @@ position = Vector2(1759, 256)
 [node name="Pit2" parent="Areas/DeathZones" index="1" unique_id=361202100 instance=ExtResource("9_0b6ei")]
 position = Vector2(3096, 256)
 
+[node name="Pit3" parent="Areas/DeathZones" index="2" unique_id=544829023 instance=ExtResource("9_0b6ei")]
+position = Vector2(3276, 256)
+
+[node name="Pit4" parent="Areas/DeathZones" index="3" unique_id=1496505806 instance=ExtResource("9_0b6ei")]
+position = Vector2(3340, 256)
+
 [node name="Win" parent="Areas" index="2" unique_id=2057243739 instance=ExtResource("12_8lag4")]
 position = Vector2(3504, 64)
 
