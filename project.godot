@@ -99,6 +99,7 @@ dash={
 2d_physics/layer_4="Collectibles"
 2d_physics/layer_5="DeathZone"
 2d_physics/layer_6="Checkpoint"
+2d_physics/layer_7="Win"
 2d_physics/layer_8="Player"
 
 [physics]

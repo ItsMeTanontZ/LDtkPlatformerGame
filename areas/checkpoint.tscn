@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr7er3rvqfkmq"]
 
-[ext_resource type="Script" uid="uid://bb17rh411jo2h" path="res://areas/checkpoint/checkpoint.gd" id="1_63gib"]
+[ext_resource type="Script" uid="uid://bb17rh411jo2h" path="res://areas/checkpoint.gd" id="1_63gib"]
 [ext_resource type="Texture2D" uid="uid://cfnqpwxlbocj0" path="res://assets/coins-chests-etc-2-0.png" id="2_m62u8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuux5"]

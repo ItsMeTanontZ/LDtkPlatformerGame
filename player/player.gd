@@ -331,6 +331,20 @@ func reset_game() -> void:
 	get_tree().reload_current_scene()
 
 
+func win() -> void:
+	print("🎉 You Win! 🎉")
+	print("Total Coins Collected: ", coins)
+	# Freeze player
+	is_dead = true
+	velocity = Vector2.ZERO
+	# Wait a moment before reloading
+	await get_tree().create_timer(2.0).timeout
+	# Reset and reload the scene
+	lives = max_lives
+	coins = 0
+	get_tree().reload_current_scene()
+
+
 func update_debug_display() -> void:
 	if debug_label == null:
 		return
