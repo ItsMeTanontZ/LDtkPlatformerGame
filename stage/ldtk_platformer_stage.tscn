@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bn5pybf2xlufj" path="res://areas/win.tscn" id="12_8lag4"]
 [ext_resource type="PackedScene" uid="uid://bnxykd7g5jdfe" path="res://ui/pause_menu.tscn" id="15_lrqgh"]
 [ext_resource type="PackedScene" uid="uid://bs6l0pt8jyacx" path="res://ui/game_over.tscn" id="16_gameover"]
-[ext_resource type="PackedScene" uid="uid://ceg3t5qj8vxd8" path="res://ui/hud.tscn" id="17_hud"]
+[ext_resource type="PackedScene" uid="uid://v5bhvyudxk8s" path="res://ui/hud.tscn" id="17_hud"]
 
 [node name="LDtkPlatformerStage" unique_id=752797936 instance=ExtResource("1_ueyvo")]
 
@@ -70,40 +70,112 @@ tile_set = ExtResource("3_h5i6i")
 [node name="Coin3" parent="Collectibles/Coins" index="0" unique_id=1369222372 instance=ExtResource("6_6ubsj")]
 position = Vector2(2960, 70)
 
-[node name="Coin4" parent="Collectibles/Coins" index="1" unique_id=463002405 instance=ExtResource("6_6ubsj")]
+[node name="Coin16" parent="Collectibles/Coins" index="1" unique_id=1792578067 instance=ExtResource("6_6ubsj")]
+position = Vector2(2319, -60)
+
+[node name="Coin17" parent="Collectibles/Coins" index="2" unique_id=410801137 instance=ExtResource("6_6ubsj")]
+position = Vector2(2351, -60)
+
+[node name="Coin18" parent="Collectibles/Coins" index="3" unique_id=181090317 instance=ExtResource("6_6ubsj")]
+position = Vector2(2383, -60)
+
+[node name="Coin19" parent="Collectibles/Coins" index="4" unique_id=2039124437 instance=ExtResource("6_6ubsj")]
+position = Vector2(2415, -60)
+
+[node name="Coin20" parent="Collectibles/Coins" index="5" unique_id=1141800 instance=ExtResource("6_6ubsj")]
+position = Vector2(2447, -60)
+
+[node name="Coin21" parent="Collectibles/Coins" index="6" unique_id=252577202 instance=ExtResource("6_6ubsj")]
+position = Vector2(2479, -60)
+
+[node name="Coin22" parent="Collectibles/Coins" index="7" unique_id=2014475410 instance=ExtResource("6_6ubsj")]
+position = Vector2(2319, -87)
+
+[node name="Coin23" parent="Collectibles/Coins" index="8" unique_id=1951542804 instance=ExtResource("6_6ubsj")]
+position = Vector2(2351, -87)
+
+[node name="Coin24" parent="Collectibles/Coins" index="9" unique_id=520488944 instance=ExtResource("6_6ubsj")]
+position = Vector2(2383, -87)
+
+[node name="Coin25" parent="Collectibles/Coins" index="10" unique_id=1020846855 instance=ExtResource("6_6ubsj")]
+position = Vector2(2415, -87)
+
+[node name="Coin26" parent="Collectibles/Coins" index="11" unique_id=1413231306 instance=ExtResource("6_6ubsj")]
+position = Vector2(2447, -87)
+
+[node name="Coin27" parent="Collectibles/Coins" index="12" unique_id=1404076753 instance=ExtResource("6_6ubsj")]
+position = Vector2(2479, -87)
+
+[node name="Coin28" parent="Collectibles/Coins" index="13" unique_id=1493937860 instance=ExtResource("6_6ubsj")]
+position = Vector2(2319, -130)
+
+[node name="Coin29" parent="Collectibles/Coins" index="14" unique_id=43063100 instance=ExtResource("6_6ubsj")]
+position = Vector2(2351, -130)
+
+[node name="Coin30" parent="Collectibles/Coins" index="15" unique_id=862280303 instance=ExtResource("6_6ubsj")]
+position = Vector2(2383, -130)
+
+[node name="Coin31" parent="Collectibles/Coins" index="16" unique_id=61580787 instance=ExtResource("6_6ubsj")]
+position = Vector2(2415, -130)
+
+[node name="Coin32" parent="Collectibles/Coins" index="17" unique_id=1054252568 instance=ExtResource("6_6ubsj")]
+position = Vector2(2447, -130)
+
+[node name="Coin33" parent="Collectibles/Coins" index="18" unique_id=2035906147 instance=ExtResource("6_6ubsj")]
+position = Vector2(2479, -130)
+
+[node name="Coin34" parent="Collectibles/Coins" index="19" unique_id=1831477147 instance=ExtResource("6_6ubsj")]
+position = Vector2(2319, -161)
+
+[node name="Coin35" parent="Collectibles/Coins" index="20" unique_id=856893209 instance=ExtResource("6_6ubsj")]
+position = Vector2(2351, -161)
+
+[node name="Coin36" parent="Collectibles/Coins" index="21" unique_id=1944812035 instance=ExtResource("6_6ubsj")]
+position = Vector2(2383, -161)
+
+[node name="Coin37" parent="Collectibles/Coins" index="22" unique_id=794564622 instance=ExtResource("6_6ubsj")]
+position = Vector2(2415, -161)
+
+[node name="Coin38" parent="Collectibles/Coins" index="23" unique_id=1328815687 instance=ExtResource("6_6ubsj")]
+position = Vector2(2447, -161)
+
+[node name="Coin39" parent="Collectibles/Coins" index="24" unique_id=916964851 instance=ExtResource("6_6ubsj")]
+position = Vector2(2479, -161)
+
+[node name="Coin4" parent="Collectibles/Coins" index="25" unique_id=463002405 instance=ExtResource("6_6ubsj")]
 position = Vector2(2960, 86)
 
-[node name="Coin5" parent="Collectibles/Coins" index="2" unique_id=204575679 instance=ExtResource("6_6ubsj")]
+[node name="Coin5" parent="Collectibles/Coins" index="26" unique_id=204575679 instance=ExtResource("6_6ubsj")]
 position = Vector2(2960, 102)
 
-[node name="Coin6" parent="Collectibles/Coins" index="3" unique_id=2138822739 instance=ExtResource("6_6ubsj")]
+[node name="Coin6" parent="Collectibles/Coins" index="27" unique_id=2138822739 instance=ExtResource("6_6ubsj")]
 position = Vector2(2960, 118)
 
-[node name="Coin7" parent="Collectibles/Coins" index="4" unique_id=2058932937 instance=ExtResource("6_6ubsj")]
+[node name="Coin7" parent="Collectibles/Coins" index="28" unique_id=2058932937 instance=ExtResource("6_6ubsj")]
 position = Vector2(2960, 134)
 
-[node name="Coin8" parent="Collectibles/Coins" index="5" unique_id=1872021792 instance=ExtResource("6_6ubsj")]
+[node name="Coin8" parent="Collectibles/Coins" index="29" unique_id=1872021792 instance=ExtResource("6_6ubsj")]
 position = Vector2(2960, 150)
 
-[node name="Coin9" parent="Collectibles/Coins" index="6" unique_id=2014860101 instance=ExtResource("6_6ubsj")]
+[node name="Coin9" parent="Collectibles/Coins" index="30" unique_id=2014860101 instance=ExtResource("6_6ubsj")]
 position = Vector2(2960, 166)
 
-[node name="Coin10" parent="Collectibles/Coins" index="7" unique_id=1410586840 instance=ExtResource("6_6ubsj")]
+[node name="Coin10" parent="Collectibles/Coins" index="31" unique_id=1410586840 instance=ExtResource("6_6ubsj")]
 position = Vector2(2991, 166)
 
-[node name="Coin11" parent="Collectibles/Coins" index="8" unique_id=81465778 instance=ExtResource("6_6ubsj")]
+[node name="Coin11" parent="Collectibles/Coins" index="32" unique_id=81465778 instance=ExtResource("6_6ubsj")]
 position = Vector2(3007, 166)
 
-[node name="Coin12" parent="Collectibles/Coins" index="9" unique_id=975063893 instance=ExtResource("6_6ubsj")]
+[node name="Coin12" parent="Collectibles/Coins" index="33" unique_id=975063893 instance=ExtResource("6_6ubsj")]
 position = Vector2(3023, 166)
 
-[node name="Coin13" parent="Collectibles/Coins" index="10" unique_id=600425643 instance=ExtResource("6_6ubsj")]
+[node name="Coin13" parent="Collectibles/Coins" index="34" unique_id=600425643 instance=ExtResource("6_6ubsj")]
 position = Vector2(3039, 166)
 
-[node name="Coin14" parent="Collectibles/Coins" index="11" unique_id=584324646 instance=ExtResource("6_6ubsj")]
+[node name="Coin14" parent="Collectibles/Coins" index="35" unique_id=584324646 instance=ExtResource("6_6ubsj")]
 position = Vector2(3055, 166)
 
-[node name="Coin15" parent="Collectibles/Coins" index="12" unique_id=152745667 instance=ExtResource("6_6ubsj")]
+[node name="Coin15" parent="Collectibles/Coins" index="36" unique_id=152745667 instance=ExtResource("6_6ubsj")]
 position = Vector2(3128, 149)
 
 [node name="SmallCoins" type="Node2D" parent="Collectibles" index="1" unique_id=2057787760]
@@ -218,6 +290,6 @@ position = Vector2(160, 120)
 
 [node name="PauseMenu" parent="CanvasLayer" index="0" unique_id=701353759 instance=ExtResource("15_lrqgh")]
 
-[node name="GameOver" parent="CanvasLayer" index="1" instance=ExtResource("16_gameover")]
+[node name="GameOver" parent="CanvasLayer" index="1" unique_id=391616181 instance=ExtResource("16_gameover")]
 
-[node name="HUD" parent="CanvasLayer" index="2" instance=ExtResource("17_hud")]
+[node name="HUD" parent="CanvasLayer" index="2" unique_id=1237731964 instance=ExtResource("17_hud")]

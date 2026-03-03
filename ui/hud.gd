@@ -11,7 +11,7 @@ const TUTORIAL_DISPLAY_TIME: float = 5.0
 
 # Tutorial texts for each stage
 var tutorial_texts: Dictionary = {
-	0: "Use WASD to move",
+	0: "Use WASD to move\nPress SHIFT to dash",
 	1: "Press SPACE to jump",
 	2: "Press SPACE twice to double jump",
 	3: "Yellow platforms are solid\nGreen platforms: Press S to drop through",
