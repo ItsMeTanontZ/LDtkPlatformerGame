@@ -1,9 +1,37 @@
 [gd_scene format=3 uid="uid://dr7er3rvqfkmq"]
 
 [ext_resource type="Script" uid="uid://bb17rh411jo2h" path="res://areas/checkpoint/checkpoint.gd" id="1_63gib"]
+[ext_resource type="Texture2D" uid="uid://cfnqpwxlbocj0" path="res://assets/coins-chests-etc-2-0.png" id="2_m62u8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuux5"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb8ix"]
+atlas = ExtResource("2_m62u8")
+region = Rect2(576, 864, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tlvm"]
+atlas = ExtResource("2_m62u8")
+region = Rect2(528, 864, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ww65t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb8ix")
+}],
+"loop": true,
+"name": &"activated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tlvm")
+}],
+"loop": true,
+"name": &"not_activated",
+"speed": 5.0
+}]
 
 [node name="Checkpoint" type="Area2D" unique_id=1411106776]
 collision_layer = 32
@@ -13,6 +41,7 @@ script = ExtResource("1_63gib")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=31052054]
 shape = SubResource("RectangleShape2D_cuux5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=50740503]
-modulate = Color(1, 1, 0, 0.5)
-scale = Vector2(32, 32)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=734918074]
+sprite_frames = SubResource("SpriteFrames_ww65t")
+animation = &"not_activated"
+autoplay = "not_activated"

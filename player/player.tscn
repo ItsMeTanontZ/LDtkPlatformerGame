@@ -432,7 +432,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kb6p2"]
 radius = 4.0
-height = 10.0
+height = 14.0
 
 [node name="Player" type="CharacterBody2D" unique_id=27479797]
 collision_layer = 128
@@ -440,15 +440,13 @@ collision_mask = 55
 script = ExtResource("1_boad6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=713858709]
-light_mask = 15
-visibility_layer = 15
 sprite_frames = SubResource("SpriteFrames_a2xo5")
-animation = &"die"
+animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786649970]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1786649970]
 light_mask = 7
 visibility_layer = 7
-position = Vector2(0, 3)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_kb6p2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1067865154]

@@ -1,9 +1,14 @@
 extends Area2D
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 var is_activated: bool = false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
+	# Ensure sprite starts with not_activated animation
+	if sprite:
+		sprite.play("not_activated")
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_activated:
@@ -15,5 +20,6 @@ func _on_body_entered(body: Node2D) -> void:
 		body.spawn_position = global_position
 		print("Checkpoint activated at: ", global_position)
 		
-		# Visual feedback (you can add animation/sprite changes here)
-		modulate = Color(0, 1, 0, 1)  # Turn green when activated
+		# Change sprite to activated animation
+		if sprite:
+			sprite.play("activated")

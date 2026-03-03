@@ -34,6 +34,7 @@ var collision_info: Array = []
 var spawn_position: Vector2
 var is_dead: bool = false
 var is_respawning: bool = false
+var falling_in_pit: bool = false
 
 # Platform drop-through system
 var platform_drop_timer: float = 0.0
@@ -46,6 +47,10 @@ var prev_colliding_spike: bool = false
 
 # Collectibles
 var coins: int = 0
+
+# Lives system
+var lives: int = 3
+var max_lives: int = 3
 
 
 func _ready() -> void:
@@ -66,8 +71,14 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Don't process if dead or respawning
-	if is_dead or is_respawning:
+	# Don't process if dead or respawning (unless falling in pit)
+	if (is_dead or is_respawning) and not falling_in_pit:
+		return
+	
+	# If falling in pit, only apply gravity and movement
+	if falling_in_pit:
+		velocity += get_gravity() * delta
+		move_and_slide()
 		return
 	
 	# Update dash cooldown
@@ -245,6 +256,8 @@ func die() -> void:
 	
 	is_dead = true
 	is_dashing = false  # Cancel dash on death
+	lives -= 1
+	print("Lives remaining: ", lives)
 	
 	# Play death animation
 	sprite.play("die")
@@ -252,9 +265,33 @@ func die() -> void:
 	# Disable physics temporarily
 	velocity = Vector2.ZERO
 	
-	# Wait a moment then respawn
+	# Wait a moment then respawn or game over
 	await get_tree().create_timer(0.5).timeout
-	respawn()
+	
+	if lives > 0:
+		respawn()
+	else:
+		reset_game()
+
+func die_from_pit() -> void:
+	if is_dead:
+		return
+	
+	is_dead = true
+	falling_in_pit = true
+	is_dashing = false  # Cancel dash on death
+	lives -= 1
+	print("Lives remaining: ", lives)
+	
+	# Let player continue falling (don't freeze physics)
+	# Wait for them to fall out of view before respawning
+	await get_tree().create_timer(1.5).timeout
+	falling_in_pit = false
+	
+	if lives > 0:
+		respawn()
+	else:
+		reset_game()
 
 func respawn() -> void:
 	# Set respawning flag first to prevent camera from following
@@ -285,11 +322,22 @@ func _on_animation_finished() -> void:
 		is_respawning = false
 
 
+func reset_game() -> void:
+	print("Game Over! Resetting...")
+	# Reset lives and coins
+	lives = max_lives
+	coins = 0
+	# Reload the current scene
+	get_tree().reload_current_scene()
+
+
 func update_debug_display() -> void:
 	if debug_label == null:
 		return
 	
 	var debug_text = "=== PLAYER DEBUG ===\n"
+	debug_text += "Lives: " + str(lives) + "/" + str(max_lives) + "\n"
+	debug_text += "Coins: " + str(coins) + "\n\n"
 	debug_text += "Position: " + str(global_position.snapped(Vector2(0.1, 0.1))) + "\n"
 	debug_text += "Velocity: " + str(velocity.snapped(Vector2(0.1, 0.1))) + "\n"
 	debug_text += "On Floor: " + str(is_on_floor()) + "\n\n"

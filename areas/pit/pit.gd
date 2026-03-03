@@ -7,6 +7,6 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" or body.is_in_group("player"):
-		if body.has_method("die"):
-			body.die()
+		if body.has_method("die_from_pit"):
+			body.die_from_pit()
 			print("Player fell into pit!")

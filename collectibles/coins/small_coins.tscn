@@ -115,16 +115,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ddkw4"]
 radius = 5.5
 
-[node name="SmallCoins" type="Area2D" unique_id=684026762]
+[node name="SmallCoin" type="Area2D" unique_id=684026762]
 collision_layer = 8
 collision_mask = 128
 script = ExtResource("1_oyywr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1335215424]
+position = Vector2(0.5, -2.5)
 sprite_frames = SubResource("SpriteFrames_g50qo")
 animation = &"coin_shine"
 autoplay = "coin_shine"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534370422]
-position = Vector2(-0.5, 2.5)
 shape = SubResource("CircleShape2D_ddkw4")
