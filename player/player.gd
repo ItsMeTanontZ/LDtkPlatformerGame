@@ -48,8 +48,8 @@ var prev_colliding_spike: bool = false
 var coins: int = 0
 
 # Lives system
-var lives: int = 3
-var max_lives: int = 3
+var lives: int = 5
+var max_lives: int = 5
 
 
 func _ready() -> void:
